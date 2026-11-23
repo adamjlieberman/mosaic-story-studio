@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" style="--mosaic-pos: 0px;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mosaic Story Studio — AI Commercial Video Production</title>
+  <meta name="description" content="Mosaic Story Studio crafts AI-powered commercial video for visionary brands. Concept to screen — cinematic, fast, unforgettable." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta property="og:title" content="Mosaic Story Studio — AI Commercial Video Production" />
+  <meta property="og:description" content="Cinematic storytelling powered by next generation AI video." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mosaic Story Studio — AI Commercial Video Production" />
+  <meta name="twitter:description" content="Cinematic storytelling powered by next generation AI video." />
+  <meta name="twitter:image" content="og-preview.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+              foreground: 'hsl(var(--card-foreground))',
+            },
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            secondary: {
+              DEFAULT: 'hsl(var(--secondary))',
+              foreground: 'hsl(var(--secondary-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            border: 'hsl(var(--border))',
+            input: 'hsl(var(--input))',
+            ring: 'hsl(var(--ring))',
+          },
+          borderRadius: {
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 0 0% 4%;
+      --card: 0 0% 98%;
+      --card-foreground: 0 0% 4%;
+      --primary: 350 85% 42%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 0 0% 96%;
+      --secondary-foreground: 0 0% 44%;
+      --muted: 0 0% 94%;
+      --muted-foreground: 0 0% 42%;
+      --accent: 170 85% 42%;
+      --accent-foreground: 0 0% 100%;
+      --border: 0 0% 90%;
+      --input: 0 0% 90%;
+      --ring: 350 85% 42%;
+      --radius: 0.5rem;
+    }
+
+    * {
+      border-color: hsl(var(--border));
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6, .font-display {
+      font-family: 'Syne', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Iridescent holographic text treatment driven by --mosaic-pos */
+    .iridescent-text {
+      background: linear-gradient(
+        90deg,
+        #f0b0d8 0%,
+        #d0b0f8 22%,
+        #a8c8f8 45%,
+        #b8e8f8 62%,
+        #e0d0f8 80%,
+        #f8c0e0 100%
+      );
+      background-size: 200% 100%;
+      background-position: calc(50% + var(--mosaic-pos, 0px) * 0.05) 0%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: background-position 0.04s linear;
+    }
+
+    /* Hero-only glow variant over dark/video backgrounds */
+    .iridescent-text--glow {
+      filter: drop-shadow(0 0 32px rgba(200, 160, 240, 0.55)) drop-shadow(0 0 8px rgba(160, 200, 248, 0.4));
+    }
+
+    /* Iridescent pill CTA button */
+    .iridescent-cta {
+      border-radius: 9999px;
+      color: #2a1a3e;
+      background: linear-gradient(
+        90deg,
+        #f0b0d8 0%,
+        #d0b0f8 30%,
+        #a8c8f8 60%,
+        #b8e8f8 80%,
+        #e0d0f8 100%
+      );
+      background-size: 200% 100%;
+      background-position: calc(50% + var(--mosaic-pos, 0px) * 0.05) 0%;
+      transition: background-position 0.04s linear, opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .iridescent-cta:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    /* Hero overlays */
+    .hero-radial-overlay {
+      background: radial-gradient(ellipse 70% 80% at 20% 80%, black 0%, transparent 60%);
+      opacity: 0.45;
+    }
+
+    .hero-top-fade {
+      background: linear-gradient(to bottom, black 0%, black 15%, transparent 100%);
+      opacity: 0.55;
+      height: 260px;
+    }
+
+    /* Ambient Hero Reel Fallback Motion */
+    @keyframes cinema-drift {
+      0% { transform: scale(1.04) translate(0%, 0%); }
+      50% { transform: scale(1.1) translate(-1.5%, 1%); }
+      100% { transform: scale(1.04) translate(0%, 0%); }
+    }
+
+    .hero-ambient-reel {
+      background:
+        radial-gradient(circle at 72% 32%, rgba(212, 16, 49, 0.35), transparent 44%),
+        radial-gradient(circle at 28% 68%, rgba(168, 200, 248, 0.28), transparent 52%),
+        radial-gradient(circle at 54% 48%, rgba(208, 176, 248, 0.22), transparent 48%),
+        linear-gradient(135deg, #09090d 0%, #14121d 48%, #070709 100%);
+      animation: cinema-drift 20s ease-in-out infinite;
+    }
+
+    /* Subtle film grain lines for cinematic depth */
+    .cinema-grid-overlay {
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* Scroll reveal transitions — default visible so grids never disappear */
+    .reveal-item {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-item.is-hidden {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom select dropdown chevron */
+    .custom-select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.25rem center;
+      background-size: 14px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-background text-foreground flex flex-col">
+
+  <main class="relative bg-background">
+    <!-- HERO SECTION -->
+    <section class="relative pt-0">
+      <!-- Overlay Header -->
+      <div class="absolute top-0 left-0 right-0 z-20 px-5 md:px-14">
+        <header class="relative z-10 w-full">
+          <div class="w-full px-5 md:px-14 flex items-center justify-between h-16 md:h-20 pt-3 md:pt-1">
+            <!-- Transparent-Background Wordmark (White MOSAIC with Prismatic AI, No Subtext, Padded for Tight Crop) -->
+            <a href="#" class="inline-flex items-center shrink-0 py-1.5 px-2 -ml-2" aria-label="Mosaic Story Studio Home">
+              <img
+                src="logo-white.png"
+                alt="MOSAIC"
+                class="h-6 md:h-7 w-auto object-contain"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              />
+              <!-- Crisp Vector Fallback with optically balanced kerning across M-O-S-A-I-C -->
+              <svg style="display:none;" viewBox="0 0 296 96" class="h-7 md:h-8 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MOSAIC">
+                <defs>
+                  <linearGradient id="aiHoloHeader" x1="154" y1="8" x2="236" y2="88" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#6ee7f9" />
+                    <stop offset="28%" stop-color="#c084fc" />
+                    <stop offset="55%" stop-color="#f472b6" />
+                    <stop offset="80%" stop-color="#fde68a" />
+                    <stop offset="100%" stop-color="#67e8f9" />
+                  </linearGradient>
+                  <pattern id="mosaicFacetsHeader" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(14)">
+                    <rect width="18" height="18" fill="url(#aiHoloHeader)" />
+                    <polygon points="0,0 18,0 9,9" fill="#ffffff" fill-opacity="0.22" />
+                    <polygon points="18,0 18,18 9,9" fill="#38bdf8" fill-opacity="0.25" />
+                    <polygon points="0,18 9,9 18,18" fill="#f472b6" fill-opacity="0.24" />
+                  </pattern>
+                </defs>
+                <text x="12" y="80" fill="#FFFFFF" font-family="'Anton', 'Impact', sans-serif" font-size="82" letter-spacing="4.5">M<tspan dx="-0.5">O</tspan><tspan dx="0">S</tspan><tspan dx="1.5" fill="url(#mosaicFacetsHeader)">A</tspan><tspan dx="1" fill="url(#mosaicFacetsHeader)">I</tspan><tspan dx="0" fill="#FFFFFF">C</tspan></text>
+              </svg>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav aria-label="Main navigation" class="hidden md:flex items-center gap-8">
+              <a href="#work" class="font-mono text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-white/80 hover:text-white transition-colors duration-200">WORK</a>
+              <a href="#manifesto" class="font-mono text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-white/80 hover:text-white transition-colors duration-200">APPROACH</a>
+              <a href="#pipeline" class="font-mono text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-white/80 hover:text-white transition-colors duration-200">THE PIPELINE</a>
+              <a href="#capabilities" class="font-mono text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-white/80 hover:text-white transition-colors duration-200">CAPABILITIES</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" type="button" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg" aria-label="Toggle menu" aria-expanded="false">
+              <span id="bar1" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+              <span id="bar2" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+              <span id="bar3" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+            </button>
+          </div>
+
+          <!-- Mobile Drawer -->
+          <div id="mobileMenuDrawer" class="hidden md:hidden mx-4 mt-2 rounded-xl bg-black/90 backdrop-blur-md border border-white/15 p-5">
+            <nav class="flex flex-col gap-4">
+              <a href="#work" class="mobile-nav-link font-mono text-xs font-semibold tracking-[0.2em] uppercase text-white/85 hover:text-white py-1">WORK</a>
+              <a href="#manifesto" class="mobile-nav-link font-mono text-xs font-semibold tracking-[0.2em] uppercase text-white/85 hover:text-white py-1">APPROACH</a>
+              <a href="#pipeline" class="mobile-nav-link font-mono text-xs font-semibold tracking-[0.2em] uppercase text-white/85 hover:text-white py-1">THE PIPELINE</a>
+              <a href="#capabilities" class="mobile-nav-link font-mono text-xs font-semibold tracking-[0.2em] uppercase text-white/85 hover:text-white py-1">CAPABILITIES</a>
+              <a href="#brief" class="mobile-nav-link font-mono text-xs font-semibold tracking-[0.2em] uppercase text-white py-1 border-t border-white/10 pt-3">INITIATE A BRIEF &rarr;</a>
+            </nav>
+          </div>
+        </header>
+      </div>
+
+      <!-- Rounded Hero Frame -->
+      <div class="m-4 md:m-8 lg:m-12 rounded-2xl overflow-hidden relative bg-[#09090c]" style="height: 90vh;">
+        <!-- Ambient Fallback Canvas (visible if local MP4 files are not yet alongside index.html) -->
+        <div class="hero-ambient-reel absolute inset-0 w-full h-full"></div>
+        <div class="cinema-grid-overlay absolute inset-0 pointer-events-none"></div>
+
+        <!-- Responsive Hero Background Video (Desktop: Reel-Darkened.mp4 | Mobile: ReelVerticalDarkened2.mp4) -->
+        <video
+          id="heroBgVideo"
+          data-desktop-src="Reel-Darkened.mp4"
+          data-mobile-src="ReelVerticalDarkened2.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="auto"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+        ></video>
+
+        <!-- Dark Overlays for High Contrast -->
+        <div class="hero-top-fade absolute top-0 left-0 right-0 pointer-events-none"></div>
+        <div class="hero-radial-overlay absolute inset-0 pointer-events-none"></div>
+
+        <!-- Bottom-Left Hero Copy -->
+        <div class="absolute inset-0 flex flex-col justify-end pb-16 md:pb-20 px-8 md:px-14 pointer-events-none">
+          <div>
+            <h1 class="font-display font-extrabold uppercase leading-none tracking-tight mb-3" style="font-size: clamp(1.75rem, 4.5vw, 3.71rem);">
+              <span class="block">
+                <span class="iridescent-text iridescent-text--glow">S</span><span class="iridescent-text iridescent-text--glow">T</span><span class="iridescent-text iridescent-text--glow">O</span><span class="iridescent-text iridescent-text--glow">R</span><span class="iridescent-text iridescent-text--glow">Y</span><span class="iridescent-text iridescent-text--glow">T</span><span class="iridescent-text iridescent-text--glow">E</span><span class="iridescent-text iridescent-text--glow">L</span><span class="iridescent-text iridescent-text--glow">L</span><span class="iridescent-text iridescent-text--glow">I</span><span class="iridescent-text iridescent-text--glow">N</span><span class="iridescent-text iridescent-text--glow">G</span>
+              </span>
+              <span class="block text-white leading-none mt-1">WITHOUT LIMITS</span>
+            </h1>
+            <p class="font-sans text-white/70 text-sm md:text-base max-w-md leading-relaxed mt-0 mb-5">
+              Cinematic storytelling powered by next generation AI video.
+            </p>
+            <div class="pointer-events-auto">
+              <a href="#work" class="iridescent-cta inline-block font-mono text-[0.65rem] font-bold tracking-[0.2em] uppercase px-8 py-3.5">
+                EXPLORE MORE
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE ANTI-SLOP MANIFESTO -->
+    <section id="manifesto" class="border-y border-border bg-background">
+      <div class="px-8 md:px-14 py-6 border-b border-border">
+        <p class="font-mono text-[0.6rem] tracking-[0.25em] text-muted-foreground uppercase">
+          The Anti-Slop Manifesto
+        </p>
+      </div>
+      <div class="px-4 md:px-14 grid grid-cols-2 md:grid-cols-4 gap-0">
+        <!-- Pillar 01 -->
+        <div class="reveal-item border-l border-border pl-3 pr-2 py-5 md:pl-6 md:pr-6 md:py-8">
+          <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-3">01 //</p>
+          <h3 class="font-mono text-xs font-bold tracking-[0.15em] text-foreground uppercase mb-3 break-words">
+            INTENT OVER RANDOMNESS
+          </h3>
+          <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+            Every frame serves the creative brief, not an algorithmic roll of the dice.
+          </p>
+        </div>
+
+        <!-- Pillar 02 -->
+        <div class="reveal-item border-l border-border pl-3 pr-2 py-5 md:pl-6 md:pr-6 md:py-8" style="transition-delay: 80ms;">
+          <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-3">02 //</p>
+          <h3 class="font-mono text-xs font-bold tracking-[0.15em] text-foreground uppercase mb-3 break-words">
+            SOUL OVER NOVELTY
+          </h3>
+          <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+            Performances with genuine comedic beats, physical presence, and grounded emotion.
+          </p>
+        </div>
+
+        <!-- Pillar 03 -->
+        <div class="reveal-item border-l border-border pl-3 pr-2 py-5 md:pl-6 md:pr-6 md:py-8" style="transition-delay: 160ms;">
+          <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-3">03 //</p>
+          <h3 class="font-mono text-xs font-bold tracking-[0.15em] text-foreground uppercase mb-3 break-words">
+            TACTILE CONTINUITY
+          </h3>
+          <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+            Zero uncanny morphing, rubbery limbs, or drifting brand assets.
+          </p>
+        </div>
+
+        <!-- Pillar 04 -->
+        <div class="reveal-item border-l border-border pl-3 pr-2 py-5 md:pl-6 md:pr-6 md:py-8" style="transition-delay: 240ms;">
+          <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-3">04 //</p>
+          <h3 class="font-mono text-xs font-bold tracking-[0.15em] text-foreground uppercase mb-3 break-words">
+            BROADCAST FINISH
+          </h3>
+          <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+            Mastered with bespoke sound design, custom foley, 35mm film emulation, and pristine color grading.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section id="work" class="py-20 md:py-28 bg-background">
+      <div class="px-8 md:px-14 mb-12">
+        <p class="font-mono text-[0.6rem] tracking-[0.25em] text-primary uppercase mb-4">
+          DIRECTORIAL LABS
+        </p>
+        <h2 class="font-display font-extrabold uppercase tracking-tight text-foreground leading-none mb-4" style="font-size: clamp(1.85rem, 4vw, 4.5rem);">
+          <span>
+            <span class="iridescent-text">S</span><span class="iridescent-text">E</span><span class="iridescent-text">L</span><span class="iridescent-text">E</span><span class="iridescent-text">C</span><span class="iridescent-text">T</span><span class="iridescent-text">E</span><span class="iridescent-text">D</span>
+          </span>
+          <span class="text-foreground"> WORK</span>
+        </h2>
+        <p class="font-sans text-muted-foreground text-base max-w-xl">
+          Concepted, directed, and post-finished with uncompromising taste.
+        </p>
+      </div>
+
+      <!-- 2x2 Commercial Spot Grid (Skittles Displayed First) -->
+      <div class="px-8 md:px-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Card 1: SKITTLES: RAINBOW IMPLOSION -->
+        <div
+          role="button"
+          tabindex="0"
+          data-spot-title="SKITTLES: RAINBOW IMPLOSION"
+          data-spot-category="BROADCAST HUMOR // IRREVERENT CPG"
+          data-spot-desc="Deadpan corporate monotony meets an aggressive deluge of candy."
+          data-spot-vimeo="1246414074"
+          data-spot-video=""
+          class="spot-card reveal-item group relative overflow-hidden rounded-xl aspect-video bg-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+          <div class="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105" style="background: radial-gradient(circle at 75% 25%, #e11d48 0%, #7c3aed 48%, #18181b 100%);"></div>
+          <img
+            src="https://vumbnail.com/1246414074_large.jpg"
+            alt="SKITTLES: RAINBOW IMPLOSION"
+            class="spot-thumb opacity-0 absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 pointer-events-none"
+            onload="this.classList.remove('opacity-0')"
+            onerror="this.style.display='none'"
+          />
+          <div class="cinema-grid-overlay absolute inset-0 opacity-40 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-black/30 pointer-events-none transition-opacity duration-700"></div>
+
+          <div class="absolute inset-0">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-16 px-6 pb-5 pointer-events-none">
+              <p class="font-mono text-[0.55rem] tracking-[0.2em] text-white/50 uppercase mb-1">
+                BROADCAST HUMOR // IRREVERENT CPG
+              </p>
+              <h3 class="font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight text-white">
+                SKITTLES: RAINBOW IMPLOSION
+              </h3>
+              <p class="font-sans text-sm text-white/60 leading-relaxed mt-1 max-w-sm">
+                Deadpan corporate monotony meets an aggressive deluge of candy.
+              </p>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="w-14 h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                <svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: COCONUT CRUNCH -->
+        <div
+          role="button"
+          tabindex="0"
+          data-spot-title="COCONUT CRUNCH"
+          data-spot-category="BEVERAGE &amp; SNACK // HIGH-VELOCITY CPG"
+          data-spot-desc="A visceral collision of tropical freshness and explosive texture."
+          data-spot-vimeo="1179387958"
+          data-spot-video=""
+          class="spot-card reveal-item group relative overflow-hidden rounded-xl aspect-video bg-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+          style="transition-delay: 80ms;"
+        >
+          <div class="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105" style="background: radial-gradient(circle at 25% 30%, #0d9488 0%, #f59e0b 55%, #1c1917 100%);"></div>
+          <img
+            src="https://vumbnail.com/1179387958_large.jpg"
+            alt="COCONUT CRUNCH"
+            class="spot-thumb opacity-0 absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 pointer-events-none"
+            onload="this.classList.remove('opacity-0')"
+            onerror="this.style.display='none'"
+          />
+          <div class="cinema-grid-overlay absolute inset-0 opacity-40 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-black/30 pointer-events-none transition-opacity duration-700"></div>
+
+          <div class="absolute inset-0">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-16 px-6 pb-5 pointer-events-none">
+              <p class="font-mono text-[0.55rem] tracking-[0.2em] text-white/50 uppercase mb-1">
+                BEVERAGE &amp; SNACK // HIGH-VELOCITY CPG
+              </p>
+              <h3 class="font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight text-white">
+                COCONUT CRUNCH
+              </h3>
+              <p class="font-sans text-sm text-white/60 leading-relaxed mt-1 max-w-sm">
+                A visceral collision of tropical freshness and explosive texture.
+              </p>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="w-14 h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                <svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: COSMIC CANINE -->
+        <div
+          role="button"
+          tabindex="0"
+          data-spot-title="COSMIC CANINE"
+          data-spot-category="NARRATIVE SHORT // PET WELLNESS"
+          data-spot-desc="A quiet, zero-gravity vignette about unconditional comfort."
+          data-spot-vimeo="1246452766"
+          data-spot-video=""
+          class="spot-card reveal-item group relative overflow-hidden rounded-xl aspect-video bg-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+          style="transition-delay: 140ms;"
+        >
+          <div class="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105" style="background: radial-gradient(circle at 70% 35%, #3b82f6 0%, #312e81 52%, #09090b 100%);"></div>
+          <img
+            src="https://vumbnail.com/1246452766_large.jpg"
+            alt="COSMIC CANINE"
+            class="spot-thumb opacity-0 absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 pointer-events-none"
+            onload="this.classList.remove('opacity-0')"
+            onerror="this.style.display='none'"
+          />
+          <div class="cinema-grid-overlay absolute inset-0 opacity-40 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-black/30 pointer-events-none transition-opacity duration-700"></div>
+
+          <div class="absolute inset-0">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-16 px-6 pb-5 pointer-events-none">
+              <p class="font-mono text-[0.55rem] tracking-[0.2em] text-white/50 uppercase mb-1">
+                NARRATIVE SHORT // PET WELLNESS
+              </p>
+              <h3 class="font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight text-white">
+                COSMIC CANINE
+              </h3>
+              <p class="font-sans text-sm text-white/60 leading-relaxed mt-1 max-w-sm">
+                A quiet, zero-gravity vignette about unconditional comfort.
+              </p>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="w-14 h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                <svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: JAUNT SPEAKERS -->
+        <div
+          role="button"
+          tabindex="0"
+          data-spot-title="JAUNT SPEAKERS"
+          data-spot-category="INDUSTRIAL DESIGN // AUDIOPHILE HARDWARE"
+          data-spot-desc="Sound made physical. Visualizing sub-bass acoustic pressure through matte black anodized aluminum and undulating ferrofluid cymatics."
+          data-spot-vimeo="1246456244"
+          data-spot-video=""
+          class="spot-card reveal-item group relative overflow-hidden rounded-xl aspect-video bg-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+          style="transition-delay: 200ms;"
+        >
+          <div class="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105" style="background: radial-gradient(circle at 30% 65%, #0284c7 0%, #0f172a 55%, #09090b 100%);"></div>
+          <img
+            src="https://vumbnail.com/1246456244_large.jpg"
+            alt="JAUNT SPEAKERS"
+            class="spot-thumb opacity-0 absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 pointer-events-none"
+            onload="this.classList.remove('opacity-0')"
+            onerror="this.style.display='none'"
+          />
+          <div class="cinema-grid-overlay absolute inset-0 opacity-40 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-black/30 pointer-events-none transition-opacity duration-700"></div>
+
+          <div class="absolute inset-0">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pt-16 px-6 pb-5 pointer-events-none">
+              <p class="font-mono text-[0.55rem] tracking-[0.2em] text-white/50 uppercase mb-1">
+                INDUSTRIAL DESIGN // AUDIOPHILE HARDWARE
+              </p>
+              <h3 class="font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight text-white">
+                JAUNT SPEAKERS
+              </h3>
+              <p class="font-sans text-sm text-white/60 leading-relaxed mt-1 max-w-md">
+                Sound made physical. Visualizing sub-bass acoustic pressure through matte black anodized aluminum and undulating ferrofluid cymatics.
+              </p>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="w-14 h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                <svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- THE STUDIO PIPELINE (Inverted Dark Section) -->
+    <section id="pipeline" class="py-20 md:py-28 bg-foreground text-background">
+      <div class="px-8 md:px-14">
+        <div class="max-w-3xl mb-16">
+          <p class="font-mono text-[0.6rem] tracking-[0.25em] text-primary uppercase mb-6">
+            The Studio Pipeline
+          </p>
+          <h2 class="text-[clamp(1.75rem,4vw,3.75rem)] font-display font-extrabold uppercase tracking-tight mb-8 leading-none">
+            <span class="block md:inline">
+              <span>
+                <span class="iridescent-text">B</span><span class="iridescent-text">R</span><span class="iridescent-text">O</span><span class="iridescent-text">A</span><span class="iridescent-text">D</span><span class="iridescent-text">C</span><span class="iridescent-text">A</span><span class="iridescent-text">S</span><span class="iridescent-text">T</span>
+              </span>
+              <span class="inline md:hidden"><br /></span>
+              <span class="hidden md:inline"> </span>
+              <span>
+                <span class="iridescent-text">L</span><span class="iridescent-text">E</span><span class="iridescent-text">V</span><span class="iridescent-text">E</span><span class="iridescent-text">L</span>
+              </span>
+            </span>
+            <span class="block md:inline text-background"> CRAFT.</span>
+          </h2>
+          <p class="font-sans text-base leading-relaxed opacity-60">
+            Generative models only look like 'AI' when there is no director in the room. We treat models as an agile digital camera department, directed by agency treatments, locked down frame by frame, and finished in post.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-white/10">
+          <!-- Stage 01 -->
+          <div class="reveal-item border-b md:border-b-0 md:border-r border-white/10 pt-8 pr-8 pb-8">
+            <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-4">01 //</p>
+            <h3 class="font-display font-extrabold text-lg uppercase tracking-tight text-background mb-3">
+              Concept &amp; Boarding
+            </h3>
+            <p class="font-sans text-sm leading-relaxed opacity-55">
+              Strategic insight, agency-standard beat sheets, and lighting decks locked before generation begins.
+            </p>
+          </div>
+
+          <!-- Stage 02 -->
+          <div class="reveal-item border-b md:border-b-0 md:border-r border-white/10 pt-8 md:pl-8 pr-8 pb-8" style="transition-delay: 80ms;">
+            <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-4">02 //</p>
+            <h3 class="font-display font-extrabold text-lg uppercase tracking-tight text-background mb-3">
+              Multi-Model Orchestration
+            </h3>
+            <p class="font-sans text-sm leading-relaxed opacity-55">
+              Deploying the right models for the right tasks, pairing Midjourney for state of the art image generation with Seedance 2.5 for the highest quality video output.
+            </p>
+          </div>
+
+          <!-- Stage 03 -->
+          <div class="reveal-item border-b md:border-b-0 md:border-r border-white/10 pt-8 lg:pl-8 pr-8 pb-8" style="transition-delay: 160ms;">
+            <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-4">03 //</p>
+            <h3 class="font-display font-extrabold text-lg uppercase tracking-tight text-background mb-3">
+              Asset &amp; Identity Rigging
+            </h3>
+            <p class="font-sans text-sm leading-relaxed opacity-55">
+              Consistent characters, exact product geometry, and continuity across every scene.
+            </p>
+          </div>
+
+          <!-- Stage 04 -->
+          <div class="reveal-item border-b md:border-b-0 border-white/10 pt-8 md:pl-8 pr-8 pb-8" style="transition-delay: 240ms;">
+            <p class="font-mono text-[0.6rem] tracking-[0.2em] text-primary uppercase mb-4">04 //</p>
+            <h3 class="font-display font-extrabold text-lg uppercase tracking-tight text-background mb-3">
+              Master Finishing
+            </h3>
+            <p class="font-sans text-sm leading-relaxed opacity-55">
+              Full offline editorial, custom sound design, and experienced editing in Premiere Pro/After Effects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES / THE PRODUCTION MODEL -->
+    <section id="capabilities" class="py-20 md:py-28 bg-background text-foreground">
+      <div class="px-8 md:px-14">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          <!-- Left Column -->
+          <div class="min-w-0">
+            <p class="font-mono text-[0.6rem] tracking-[0.25em] text-primary uppercase mb-6">
+              THE PRODUCTION MODEL
+            </p>
+            <h2 class="font-display font-extrabold uppercase tracking-tight text-foreground leading-none mb-8" style="font-size: clamp(1.85rem, 3vw, 2.75rem);">
+              <span class="block">
+                <span>
+                  <span class="iridescent-text">H</span><span class="iridescent-text">I</span><span class="iridescent-text">G</span><span class="iridescent-text">H</span><span>&nbsp;</span><span class="iridescent-text">C</span><span class="iridescent-text">O</span><span class="iridescent-text">N</span><span class="iridescent-text">C</span><span class="iridescent-text">E</span><span class="iridescent-text">P</span><span class="iridescent-text">T</span><span class="text-foreground">.</span>
+                </span>
+              </span>
+              <span class="block text-foreground mt-1">LOW COST.</span>
+            </h2>
+            <p class="font-sans text-base text-muted-foreground leading-relaxed max-w-md">
+              Built for agencies and brands seeking ambitious cinematic scale without six-figure physical production overhead. We collapse multi-week shoots into agile turnarounds while protecting every frame of creative craft.
+            </p>
+          </div>
+
+          <!-- Right Column -->
+          <div class="space-y-0 border-t border-border">
+            <!-- Offering 01 -->
+            <div class="reveal-item border-b border-border py-8 flex gap-6 items-start">
+              <span class="font-mono text-primary text-lg shrink-0 mt-0.5">&xrarr;</span>
+              <div>
+                <h3 class="font-display font-extrabold text-lg uppercase tracking-tight text-foreground mb-2">
+                  Commercial Spots &amp; Broadcast Specs
+                </h3>
+                <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+                  Concepted, directed, and finished for cross-channel deployment.
+                </p>
+              </div>
+            </div>
+
+            <!-- Offering 02 -->
+            <div class="reveal-item border-b border-border py-8 flex gap-6 items-start" style="transition-delay: 80ms;">
+              <span class="font-mono text-primary text-lg shrink-0 mt-0.5">&xrarr;</span>
+              <div>
+                <h3 class="font-display font-extrabold text-lg uppercase tracking-tight text-foreground mb-2">
+                  Agency Pitch Animatics &amp; Treatments
+                </h3>
+                <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+                  Rapid-turnaround visual prototypes and motion mood reels to win the room.
+                </p>
+              </div>
+            </div>
+
+            <!-- Offering 03 -->
+            <div class="reveal-item border-b border-border py-8 flex gap-6 items-start" style="transition-delay: 160ms;">
+              <span class="font-mono text-primary text-lg shrink-0 mt-0.5">&xrarr;</span>
+              <div>
+                <h3 class="font-display font-extrabold text-lg uppercase tracking-tight text-foreground mb-2">
+                  Broadcast Master Finishing
+                </h3>
+                <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+                  Fully color-graded master delivery with dedicated foley and score mix.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT INTAKE / BRIEF -->
+    <section id="brief" class="py-20 md:py-28 border-t border-border bg-background">
+      <div class="px-8 md:px-14">
+        <div class="max-w-2xl mb-14">
+          <p class="font-mono text-[0.6rem] tracking-[0.25em] text-primary uppercase mb-6">
+            Project Intake
+          </p>
+          <h2 class="font-display font-extrabold uppercase tracking-tight text-foreground leading-none mb-6" style="font-size: clamp(1.85rem, 4vw, 3.75rem);">
+            <span class="block md:inline">
+              <span>
+                <span class="iridescent-text">I</span><span class="iridescent-text">N</span><span class="iridescent-text">I</span><span class="iridescent-text">T</span><span class="iridescent-text">I</span><span class="iridescent-text">A</span><span class="iridescent-text">T</span><span class="iridescent-text">E</span>
+              </span>
+              <span class="text-foreground"> A</span>
+            </span>
+            <span class="block md:inline text-foreground"> PROJECT BRIEF</span>
+          </h2>
+          <p class="font-sans text-base text-muted-foreground leading-relaxed">
+            Direct line to creative direction. Treatments, visual references, and estimates returned promptly.
+          </p>
+        </div>
+
+        <form id="briefForm" class="space-y-8 max-w-2xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <label for="nameAgency" class="block font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase mb-2">
+                Name &amp; Agency / Brand
+              </label>
+              <input
+                id="nameAgency"
+                name="nameAgency"
+                type="text"
+                required
+                placeholder="Maya Chen / Publicis"
+                class="w-full bg-transparent border-b border-border text-foreground font-sans text-sm py-3 placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors duration-200"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase mb-2">
+                Work Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="maya@agency.com"
+                class="w-full bg-transparent border-b border-border text-foreground font-sans text-sm py-3 placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors duration-200"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <label for="engagementScope" class="block font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase mb-2">
+                Engagement Scope
+              </label>
+              <select
+                id="engagementScope"
+                name="engagementScope"
+                required
+                class="custom-select w-full bg-background border-b border-border text-foreground font-sans text-sm py-3 pr-6 focus:outline-none focus:border-primary transition-colors duration-200 appearance-none cursor-pointer"
+              >
+                <option value="" disabled selected>Select scope...</option>
+                <option value="commercial-spot">Commercial Spot (15s–30s)</option>
+                <option value="pitch-film">Agency Pitch Film &amp; Animatic</option>
+                <option value="cpg-vignettes">CPG Product &amp; Fluid Vignettes</option>
+                <option value="brand-film">Brand Film / Cinematic Anthem</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="projectTier" class="block font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase mb-2">
+                Project Scope / Tier
+              </label>
+              <select
+                id="projectTier"
+                name="projectTier"
+                required
+                class="custom-select w-full bg-background border-b border-border text-foreground font-sans text-sm py-3 pr-6 focus:outline-none focus:border-primary transition-colors duration-200 appearance-none cursor-pointer"
+              >
+                <option value="" disabled selected>Select tier...</option>
+                <option value="sprint">Sprint Concept / Pitch Film</option>
+                <option value="campaign-spot">Full Campaign Spot</option>
+                <option value="multi-asset">Multi-Asset Production</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="notes" class="block font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground uppercase mb-2">
+              Creative Brief &amp; Notes
+            </label>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="5"
+              placeholder="Describe the creative challenge, visual tone, reference directors, and desired timeline..."
+              class="w-full bg-transparent border-b border-border text-foreground font-sans text-sm py-3 placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors duration-200 resize-none"
+            ></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-2">
+            <p class="font-mono text-[0.6rem] tracking-[0.15em] text-muted-foreground uppercase">
+              &#128274; All treatments delivered under mutual creative NDA.
+            </p>
+            <button
+              type="submit"
+              class="font-mono text-xs font-bold tracking-[0.25em] uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 shrink-0 rounded-none"
+            >
+              TRANSMIT BRIEF
+            </button>
+          </div>
+
+          <!-- Confirmation Banner -->
+          <div id="briefConfirmation" class="hidden border border-border bg-card p-6 rounded-lg">
+            <p class="font-mono text-[0.65rem] tracking-[0.2em] text-primary uppercase mb-2">
+              BRIEF RECEIVED // NDA PROTECTED
+            </p>
+            <p class="font-sans text-sm text-foreground leading-relaxed mb-3">
+              Thank you — our executive producer has received your brief and will respond within 24 hours with initial treatment availability.
+            </p>
+            <button id="resetBriefBtn" type="button" class="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground underline">
+              Submit another brief
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-border py-10 px-6 md:px-14 bg-background">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <!-- Left: White-Background Wordmark (Crimson MOSAIC + Prismatic AI + STORY STUDIO, Padded for Tight Crop) -->
+        <div class="flex items-center gap-5">
+          <a href="#" aria-label="Mosaic Story Studio" class="inline-flex items-center p-2 -ml-2 shrink-0">
+            <img
+              src="logo-light.jpg"
+              alt="MOSAIC STORY STUDIO"
+              class="h-10 md:h-11 w-auto object-contain"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <!-- Crisp Vector Fallback with optically balanced kerning across M-O-S-A-I-C -->
+            <svg style="display:none;" viewBox="0 0 296 126" class="h-10 md:h-11 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MOSAIC STORY STUDIO">
+              <defs>
+                <linearGradient id="aiHoloFooter" x1="154" y1="8" x2="236" y2="88" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#6ee7f9" />
+                  <stop offset="28%" stop-color="#c084fc" />
+                  <stop offset="55%" stop-color="#f472b6" />
+                  <stop offset="80%" stop-color="#fde68a" />
+                  <stop offset="100%" stop-color="#67e8f9" />
+                </linearGradient>
+                <pattern id="mosaicFacetsFooter" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(14)">
+                  <rect width="18" height="18" fill="url(#aiHoloFooter)" />
+                  <polygon points="0,0 18,0 9,9" fill="#ffffff" fill-opacity="0.22" />
+                  <polygon points="18,0 18,18 9,9" fill="#38bdf8" fill-opacity="0.25" />
+                  <polygon points="0,18 9,9 18,18" fill="#f472b6" fill-opacity="0.24" />
+                </pattern>
+              </defs>
+              <text x="12" y="80" fill="#DC0613" font-family="'Anton', 'Impact', sans-serif" font-size="82" letter-spacing="4.5">M<tspan dx="-0.5">O</tspan><tspan dx="0">S</tspan><tspan dx="1.5" fill="url(#mosaicFacetsFooter)">A</tspan><tspan dx="1" fill="url(#mosaicFacetsFooter)">I</tspan><tspan dx="0" fill="#DC0613">C</tspan></text>
+              <text x="13" y="114" fill="#6E6E73" font-family="'Inter', sans-serif" font-weight="400" font-size="22.5" letter-spacing="8.9">STORY STUDIO</text>
+            </svg>
+          </a>
+          <span class="font-mono text-[0.55rem] tracking-[0.12em] text-muted-foreground uppercase hidden lg:block">
+            A West of the River Productions Venture
+          </span>
+        </div>
+
+        <!-- Center: Footer Nav -->
+        <nav aria-label="Footer links" class="flex flex-wrap gap-5">
+          <a href="#work" class="font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors uppercase">WORK</a>
+          <a href="#manifesto" class="font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors uppercase">APPROACH</a>
+          <a href="#pipeline" class="font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors uppercase">THE PIPELINE</a>
+          <a href="#capabilities" class="font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors uppercase">CAPABILITIES</a>
+          <a href="#brief" class="font-mono text-[0.6rem] tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors uppercase">BRIEF</a>
+        </nav>
+
+        <!-- Right: Email & Copyright -->
+        <div class="flex flex-col gap-1">
+          <a href="mailto:hello@mosaicstorystudio.com" class="font-mono text-[0.65rem] tracking-[0.1em] text-foreground hover:text-primary transition-colors">
+            hello@mosaicstorystudio.com
+          </a>
+          <p class="font-mono text-[0.55rem] tracking-[0.1em] text-muted-foreground">
+            &copy;2026 Mosaic Story Studio. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- VIDEO LIGHTBOX MODAL (Ready for MP4 or Vimeo Embeds) -->
+  <div id="spotModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md items-center justify-center p-4 md:p-10" role="dialog" aria-modal="true" aria-labelledby="modalSpotTitle">
+    <div class="w-full max-w-5xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <p id="modalSpotCategory" class="font-mono text-[0.6rem] tracking-[0.2em] text-white/60 uppercase"></p>
+          <h3 id="modalSpotTitle" class="font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight text-white"></h3>
+        </div>
+        <button id="closeSpotModal" type="button" class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-white/80 hover:text-white border border-white/25 px-4 py-2 rounded-full transition-colors">
+          CLOSE &times;
+        </button>
+      </div>
+
+      <!-- 16:9 Theater Player Container -->
+      <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-[#0c0c10] border border-white/15 flex items-center justify-center">
+        <iframe
+          id="modalVimeoPlayer"
+          src=""
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          title="Theater Vimeo Player"
+          class="hidden w-full h-full border-0"
+        ></iframe>
+        <video id="modalVideoPlayer" controls playsinline class="hidden w-full h-full object-cover"></video>
+        <div id="modalVideoPlaceholder" class="text-center px-6 max-w-md">
+          <div class="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-5 h-5 text-white/80 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </div>
+          <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-white/80 mb-2">
+            VIDEO ASSET SLOT READY
+          </p>
+          <p id="modalSpotDesc" class="font-sans text-sm text-white/60 leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 0. Responsive Hero Background Video Loader (Desktop vs Mobile MP4)
+    (function initHeroBackgroundVideo() {
+      const video = document.getElementById('heroBgVideo');
+      if (!video) return;
+
+      const mq = window.matchMedia('(min-width: 768px)');
+      let activeSrc = '';
+
+      function applyHeroVideoSource() {
+        const nextSrc = mq.matches
+          ? video.getAttribute('data-desktop-src')
+          : video.getAttribute('data-mobile-src');
+
+        if (!nextSrc || nextSrc === activeSrc) return;
+        activeSrc = nextSrc;
+        video.classList.add('opacity-0');
+        video.muted = true;
+        video.defaultMuted = true;
+        video.src = nextSrc;
+        video.load();
+        video.play().catch(() => {});
+      }
+
+      video.addEventListener('loadeddata', () => {
+        video.classList.remove('opacity-0');
+      });
+
+      video.addEventListener('error', () => {
+        video.classList.add('opacity-0');
+      });
+
+      if (mq.addEventListener) {
+        mq.addEventListener('change', applyHeroVideoSource);
+      } else {
+        mq.addListener(applyHeroVideoSource);
+      }
+
+      applyHeroVideoSource();
+    })();
+
+    // 1. Scroll-driven holographic gradient shift (--mosaic-pos)
+    (function initIridescentScroll() {
+      let ticking = false;
+      function updateMosaicPos() {
+        document.documentElement.style.setProperty('--mosaic-pos', `${window.scrollY}px`);
+        ticking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateMosaicPos);
+          ticking = true;
+        }
+      }, { passive: true });
+      updateMosaicPos();
+    })();
+
+    // 2. Mobile Navigation Drawer Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+
+    function toggleMobileMenu(forceClose = false) {
+      const isOpen = !mobileMenuDrawer.classList.contains('hidden');
+      if (forceClose || isOpen) {
+        mobileMenuDrawer.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        bar1.style.transform = '';
+        bar2.style.opacity = '1';
+        bar3.style.transform = '';
+      } else {
+        mobileMenuDrawer.classList.remove('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        bar1.style.transform = 'translateY(8px) rotate(45deg)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => toggleMobileMenu(true));
+    });
+
+    // 3. Scroll Reveal IntersectionObserver + Fallback
+    const revealItems = document.querySelectorAll('.reveal-item');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('is-hidden');
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+      revealItems.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top > window.innerHeight) {
+          el.classList.add('is-hidden');
+          observer.observe(el);
+        }
+      });
+    }
+
+    // 4. Selected Work Lightbox Modal & Dynamic Vimeo Thumbnail Loader
+    document.querySelectorAll('.spot-card').forEach((card) => {
+      const vimeoId = card.getAttribute('data-spot-vimeo');
+      const thumbImg = card.querySelector('.spot-thumb');
+      if (vimeoId && thumbImg) {
+        fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent('https://vimeo.com/' + vimeoId)}&width=1280`)
+          .then((res) => (res.ok ? res.json() : Promise.reject()))
+          .then((data) => {
+            if (data && data.thumbnail_url) {
+              thumbImg.style.display = '';
+              thumbImg.src = data.thumbnail_url;
+              thumbImg.classList.remove('opacity-0');
+            }
+          })
+          .catch(() => {});
+      }
+    });
+
+    const spotModal = document.getElementById('spotModal');
+    const closeSpotModal = document.getElementById('closeSpotModal');
+    const modalSpotTitle = document.getElementById('modalSpotTitle');
+    const modalSpotCategory = document.getElementById('modalSpotCategory');
+    const modalSpotDesc = document.getElementById('modalSpotDesc');
+    const modalVimeoPlayer = document.getElementById('modalVimeoPlayer');
+    const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+    const modalVideoPlaceholder = document.getElementById('modalVideoPlaceholder');
+
+    function openSpotModal(card) {
+      const title = card.getAttribute('data-spot-title') || '';
+      const category = card.getAttribute('data-spot-category') || '';
+      const desc = card.getAttribute('data-spot-desc') || '';
+      const videoSrc = card.getAttribute('data-spot-video') || '';
+      const vimeoId = card.getAttribute('data-spot-vimeo') || '';
+
+      modalSpotTitle.textContent = title;
+      modalSpotCategory.textContent = category;
+      modalSpotDesc.textContent = desc;
+
+      if (videoSrc) {
+        modalVimeoPlayer.src = '';
+        modalVimeoPlayer.classList.add('hidden');
+        modalVideoPlayer.src = videoSrc;
+        modalVideoPlayer.classList.remove('hidden');
+        modalVideoPlaceholder.classList.add('hidden');
+        modalVideoPlayer.play().catch(() => {});
+      } else if (vimeoId) {
+        modalVideoPlayer.pause();
+        modalVideoPlayer.src = '';
+        modalVideoPlayer.classList.add('hidden');
+        modalVimeoPlayer.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+        modalVimeoPlayer.classList.remove('hidden');
+        modalVideoPlaceholder.classList.add('hidden');
+      } else {
+        modalVideoPlayer.pause();
+        modalVideoPlayer.src = '';
+        modalVideoPlayer.classList.add('hidden');
+        modalVimeoPlayer.src = '';
+        modalVimeoPlayer.classList.add('hidden');
+        modalVideoPlaceholder.classList.remove('hidden');
+      }
+
+      spotModal.classList.remove('hidden');
+      spotModal.classList.add('flex');
+    }
+
+    function hideSpotModal() {
+      spotModal.classList.add('hidden');
+      spotModal.classList.remove('flex');
+      modalVideoPlayer.pause();
+      modalVideoPlayer.src = '';
+      modalVimeoPlayer.src = '';
+    }
+
+    document.querySelectorAll('.spot-card').forEach((card) => {
+      card.addEventListener('click', () => openSpotModal(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openSpotModal(card);
+        }
+      });
+    });
+
+    closeSpotModal.addEventListener('click', hideSpotModal);
+    spotModal.addEventListener('click', (e) => {
+      if (e.target === spotModal) hideSpotModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !spotModal.classList.contains('hidden')) {
+        hideSpotModal();
+      }
+    });
+
+    // 5. Project Brief Form Submission Handler
+    const briefForm = document.getElementById('briefForm');
+    const briefConfirmation = document.getElementById('briefConfirmation');
+    const resetBriefBtn = document.getElementById('resetBriefBtn');
+
+    briefForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      briefConfirmation.classList.remove('hidden');
+      briefForm.querySelectorAll('input, select, textarea, button[type="submit"]').forEach((el) => {
+        el.disabled = true;
+      });
+    });
+
+    resetBriefBtn.addEventListener('click', () => {
+      briefForm.reset();
+      briefConfirmation.classList.add('hidden');
+      briefForm.querySelectorAll('input, select, textarea, button[type="submit"]').forEach((el) => {
+        el.disabled = false;
+      });
+    });
+  </script>
+</body>
+</html>
